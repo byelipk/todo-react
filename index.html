@@ -3,8 +3,64 @@
   <head>
     <meta charset="utf-8">
     <title>Todo App</title>
+    <style media="screen">
+      html {
+        margin: 0;
+        padding: 0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+    </style>
   </head>
   <body>
-  	<div id="app"></div>
+
+    <div class="container">
+      <h1>Todo List</h1>
+
+      <ul id="list" class="list">
+        <!-- Render todo items here -->
+        <li><em>Todos will go here</em></li>
+      </ul>
+
+      <form>
+        <input type="text" name="todo" value="" placeholder="Your task here...">
+        <input type="submit" name="submit" value="Add">
+      </form>
+    </div>
+
+    <script type="text/javascript">
+      const todos    = [];
+      const todoList = document.querySelector('#list');
+      const form     = document.querySelector('form');
+      const input    = form.querySelector('input[type="text"]');
+
+      const onInputHandler = function onInputHandler(event) {
+        console.log(event.target.value);
+      }
+
+      const onSubmitHandler = function onSubmitHandler(event) {
+        event.preventDefault();
+
+        const inputVal = input.value;
+        if (!inputVal) return;
+
+        const listItem = document.createElement('li');
+        const text     = document.createTextNode(inputVal);
+        listItem.appendChild(text);
+
+        if (todos.length === 0 && todoList.children.length === 1) {
+          todoList.removeChild(todoList.lastElementChild);
+        }
+
+        todos.push(listItem);
+        todoList.appendChild(listItem);
+      }
+
+      input.addEventListener('input', onInputHandler);
+
+      form.addEventListener('submit', onSubmitHandler);
+
+    </script>
   </body>
 </html>
