@@ -13,12 +13,11 @@ module.exports = {
     publicPath: '/public/'
   },
   devServer: {
-    hot: true,
     publicPath: '/public/',
     historyApiFallback: true
   },
   resolve: {
-    extensions: ['.js', '.json']
+    extensions: ['.js', '.jsx', '.json']
   },
   stats: {
     colors: true,
