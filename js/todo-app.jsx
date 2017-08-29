@@ -13,7 +13,7 @@ class TodoApp extends React.Component {
     this.deleteEntry = this.deleteEntry.bind(this);
 
     this.state = {
-      todos: ['get food', 'drink water']
+      todos: this.props.todos
     }
   }
 
@@ -28,12 +28,17 @@ class TodoApp extends React.Component {
   render() {
     return (
       <div className="container">
-        <h1>Todo List</h1>
+        <h1>{this.props.title}</h1>
         <TodoList todos={this.state.todos} deleteEntry={this.deleteEntry} />
         <TodoForm createEntry={this.createEntry} />
       </div>
     );
   }
 }
+
+TodoApp.defaultProps = {
+  title: 'Todo List',
+  todos: ['get food', 'drink water']
+};
 
 export default TodoApp;
