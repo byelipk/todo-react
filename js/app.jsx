@@ -1,5 +1,5 @@
 // CSS
-import './styles.css';
+import '../css/styles.css';
 
 // JS
 import React from 'react';
